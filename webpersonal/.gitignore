@@ -1,0 +1,54 @@
+# Bytecode de Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Archivos de entorno virtual
+env/
+venv/
+
+# Configuración del entorno local
+*.env
+.env.*
+
+# Archivos de logs
+*.log
+logs/
+log/
+
+# Archivos de bases de datos locales
+*.sqlite3
+
+# Archivos de migraciones de Django
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Archivos creados por editores/IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Archivos creados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de compilación estática
+/static/
+*/staticfiles/
+
+# Archivos de media cargados por el usuario
+/media/
+
+# Archivos de Node.js (si usas herramientas frontend como npm o yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de test coverage
+coverage/
+*.coverage
+.coverage.*
+
+# Archivos de Docker (si aplica)
+*.pid
