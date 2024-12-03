@@ -1,0 +1,54 @@
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment files
+env/
+venv/
+
+# Local environment configuration
+*.env
+.env.*
+
+# Log files
+*.log
+logs/
+log/
+
+# Local database files
+*.sqlite3
+
+# Django migration files
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Compiled static files
+/static/
+*/staticfiles/
+
+# User-uploaded media files
+/media/
+
+# Node.js files (if using npm or yarn for frontend tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Test coverage files
+coverage/
+*.coverage
+.coverage.*
+
+# Docker files (if applicable)
+*.pid
