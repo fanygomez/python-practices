@@ -16,11 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from pages.urls import pages_url_patterns
+from profiles.urls import profiles_patterns
+from django.conf import settings
 urlpatterns = [
     #Path core
     path('', include('core.urls')),
     #Path page
-    path('page/', include('pages.urls')),
+    path('pages/', include(pages_url_patterns)),
+    #Path Admin
     path('admin/', admin.site.urls),
+    #Path Auth
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('registration.urls')),
+    #Patha profile
+    path('profiles/', include(profiles_patterns)),
+    
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
