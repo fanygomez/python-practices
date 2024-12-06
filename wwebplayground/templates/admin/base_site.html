@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Admin Panel - Test') }}{% endblock %}
+
+
+{% block extrastyle %}
+    <style>
+        #header { 
+            background: #275984
+        }
+    </style>
+{% endblock extrastyle %}
+    
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">
+    <img src="{% static 'logo.png' %}" height="40px"></img></a></h1>
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
