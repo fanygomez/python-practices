@@ -28,7 +28,7 @@ class FilmViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [DjangoFilterBackend,  filters.SearchFilter, filters.OrderingFilter]
 
     search_fields = ['title', 'year', 'genres__name']
-    ordering_fields = ['title', 'year', 'genres__name']
+    ordering_fields = ['title', 'year', 'genres__name', 'favorites', 'average_note']
     filterset_fields = {
         'year': ['lte', 'gte'],  # year is less than or equal to, year is greater than or equal to
         'genres': ['exact']

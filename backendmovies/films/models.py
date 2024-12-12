@@ -19,7 +19,8 @@ class Film(models.Model):
     genres = models.ManyToManyField('FilmGenre', related_name="film_genres", verbose_name="Géneros")
     image_thumbnail = models.ImageField(upload_to=path_to_film, null=True, blank=True, verbose_name="Miniatura")
     image_wallpaper = models.ImageField(upload_to=path_to_film, null=True, blank=True, verbose_name="Wallpaper")
-
+    favorites = models.IntegerField(default=0, verbose_name="favoritos")
+    average_note = models.FloatField(default=0.0, verbose_name="nota media", validators=[MaxValueValidator(10.0)])
 
     class Meta:
         verbose_name = "Película"
