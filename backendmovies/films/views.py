@@ -1,5 +1,6 @@
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.pagination import PageNumberPagination
 from .models import Film, FilmGenre
 from .serializers import FilmSerializer, FilmGenreSerializer
 
@@ -18,6 +19,8 @@ class FilmViewSet(viewsets.ReadOnlyModelViewSet):
         'genres': ['exact']
     }
 
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 8 # Default page size
 
 class GenreViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = FilmGenre.objects.all()
