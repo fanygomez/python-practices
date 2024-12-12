@@ -33,8 +33,7 @@ urlpatterns = [
     path('api/', include('authentication.urls')),
     path('api/', include(router.urls)),
     # Api films
-    path('api/', include('films.urls')),
-    path('api/user/films/', film_views.FilmUserViewSet.as_view())
+    # path('api/user/films/', film_views.FilmUserViewSet.as_view())
 ]
 
 # Serve static files in development server
