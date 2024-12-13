@@ -43,7 +43,6 @@ class GenreViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'slug'
 
 class FilmUserViewSet(views.APIView):
-    authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     
     def get(self, request, *args, **kwargs):
@@ -61,13 +60,15 @@ class FilmUserViewSet(views.APIView):
                 status=status.HTTP_404_NOT_FOUND)
 
         film_user, created = FilmUser.objects.get_or_create(user=request.user, film=film)
-
         
         film_user.state = request.data.get('state', 0)
         film_user.favorite = request.data.get('favorite', False)
         film_user.note = request.data.get('note', -1)
         film_user.review = request.data.get('review', None)
-
+        
+        if created == False:
+            return Response({'status': 'Exists'}, status=status.HTTP_400_BAD_REQUEST)
+            
         # If the movie is marked as NOT VIEWED we automatically delete it.
         if int(film_user.state) == 0:
             film_user.delete()
@@ -78,5 +79,4 @@ class FilmUserViewSet(views.APIView):
         else:
             film_user.save()
 
-        return Response(
-            {'status': 'Saved'}, status=status.HTTP_200_OK)
+        return Response({'status': 'Saved'}, status=status.HTTP_201_CREATED)
