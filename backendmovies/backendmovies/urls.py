@@ -29,6 +29,9 @@ router.register('genres', film_views.GenreViewSet, basename='FilmGenre')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #Api Auth
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.authtoken')),
      # Api routes
     path('api/', include('authentication.urls')),
     path('api/', include(router.urls)),

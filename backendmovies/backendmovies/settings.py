@@ -26,10 +26,10 @@ SECRET_KEY = 'django-insecure-nnq6h)f3^g76!#*norv=(lg@7ukjdd-@0&)86h_ym*qigwea*c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["http://localhost:3000","127.0.0.1"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 # Configuración de CORS
-CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGIN = ["http://localhost:8000", "http://127.0.0.1:8000"]
+#CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -47,10 +47,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_rest_passwordreset',
     'django_filters',
+    'rest_framework.authtoken',
+    'djoser',
     # Django custom apps
     'authentication',
     'films'
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -62,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'backendmovies.urls'
 
@@ -80,6 +84,15 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ),
+}
 
 WSGI_APPLICATION = 'backendmovies.wsgi.application'
 
@@ -142,3 +155,10 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # path al directorio local
 MEDIA_URL = 'http://localhost:8000/media/'    # url para el desarrollo
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user': 'authentication.serializers.UserSerializer',
+        'current_user': 'authentication.serializers.UserSerializer',
+    }
+}

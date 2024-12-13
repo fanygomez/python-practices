@@ -9,11 +9,12 @@ pillow = "*"
 pylint = "*"
 pylint-django = "*"
 pylint-celery = "*"
-djangorestframework = "*"
-django-cors-headers = "*"
 django-rest-passwordreset = "*"
 django = "*"
 django-filter = "*"
+djangorestframework = "*"
+djoser = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
